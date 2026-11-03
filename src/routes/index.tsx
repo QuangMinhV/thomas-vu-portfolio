@@ -1,24 +1,41 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Typewriter } from "@/components/Typewriter";
+import { profile } from "@/data/portfolio";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Thomas Vu — Full-Stack Developer" },
+      { name: "description", content: "Thomas Vu builds fast, accessible, minimal web experiences." },
+      { property: "og:title", content: "Thomas Vu — Full-Stack Developer" },
+      { property: "og:description", content: "Thomas Vu builds fast, accessible, minimal web experiences." },
+    ],
+  }),
+  component: Hero,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+/** Hero section with staggered load-in and typewriter roles. */
+function Hero() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <section aria-labelledby="hero-title" className="mx-auto flex min-h-[85vh] max-w-5xl flex-col justify-center px-5">
+      <div className="stagger">
+        <p className="font-mono text-sm text-primary">hi, my name is</p>
+        <h1 id="hero-title" className="mt-3 text-5xl font-bold tracking-tight sm:text-7xl md:text-8xl">
+          {profile.name}<span className="text-primary">.</span>
+        </h1>
+        <p className="mt-4 text-2xl font-medium text-muted-foreground sm:text-4xl">
+          <Typewriter words={profile.roles} />
+        </p>
+        <p className="mt-6 max-w-xl text-lg text-muted-foreground">{profile.tagline}</p>
+        <div className="mt-10 flex flex-wrap gap-4">
+          <Link to="/projects" className="rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground shadow-[var(--shadow-neon)] transition-transform hover:-translate-y-0.5">
+            View my work
+          </Link>
+          <Link to="/contact" className="glass rounded-full px-6 py-3 font-medium hover:text-primary">
+            Get in touch
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }

@@ -1,29 +1,24 @@
-# Welcome to your Lovable project
+# Thomas Vu — Portfolio
 
-This project was built with [Lovable](https://lovable.dev).
+Dark minimalist portfolio with neon accents, built with React (TanStack Start), Vite and Tailwind CSS v4.
 
-## Build with Lovable
+## Setup
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+```bash
+bun install     # or npm install
+bun run dev     # start dev server at http://localhost:8080
+bun run build   # production build
 ```
 
-## Built with
+## Editing content
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+All text (name, roles, projects, skills, experience, contact) lives in `src/data/portfolio.ts`.
+
+## Structure
+
+- `src/styles.css` — design tokens (colors, fonts), glass, reveal & transition utilities
+- `src/routes/` — one page per section: `index` (Hero), `about`, `projects`, `skills`, `experience`, `contact`
+- `src/routes/__root.tsx` — shell: particle background, nav, page transitions, footer
+- `src/components/` — `ParticleBackground`, `Typewriter`, `Reveal` (scroll animation), `SiteNav`, `Section`
+
+No animation libraries are used; effects are pure CSS + a small canvas, and all respect `prefers-reduced-motion`.
