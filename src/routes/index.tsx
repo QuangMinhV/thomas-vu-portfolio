@@ -31,9 +31,14 @@ function Hero() {
           <Link to="/projects" className="rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground shadow-[var(--shadow-neon)] transition-transform hover:-translate-y-0.5">
             View my work
           </Link>
-          <Link to="/contact" className="glass rounded-full px-6 py-3 font-medium hover:text-primary">
-            Get in touch
-          </Link>
+          <a
+            href={profile.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glass rounded-full px-6 py-3 font-medium hover:text-primary"
+          >
+            Download Resume
+          </a>
         </div>
       </div>
     </section>

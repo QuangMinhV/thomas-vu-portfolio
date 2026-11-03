@@ -8,6 +8,7 @@ export const profile = {
   tagline: "I build fast, accessible, and beautifully minimal web experiences.",
   email: "hello@thomasvu.dev",
   location: "Ho Chi Minh City, Vietnam",
+  resumeUrl: "https://drive.google.com/uc?export=download&id=1iXi4VcUD_iKJsvdW8XV-JE3c-oyhl9_e",
   socials: [
     { label: "GitHub", href: "https://github.com/" },
     { label: "LinkedIn", href: "https://linkedin.com/" },
