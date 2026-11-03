@@ -7,7 +7,7 @@ export function Typewriter({ words, speed = 70, pause = 1600 }: { words: string[
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const word = words[i % words.length];
+    const word = words[i % words.length] ?? "";
     let t: ReturnType<typeof setTimeout>;
     if (!deleting && text === word) t = setTimeout(() => setDeleting(true), pause);
     else if (deleting && text === "") { setDeleting(false); setI((n) => n + 1); }

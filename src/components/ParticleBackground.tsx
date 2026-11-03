@@ -36,7 +36,7 @@ export function ParticleBackground() {
       ctx.clearRect(0, 0, w, h);
       ctx.fillStyle = neon; ctx.strokeStyle = neon;
       for (let i = 0; i < pts.length; i++) {
-        const p = pts[i];
+        const p = pts[i]!;
         if (!reduce) {
           p.x += p.vx; p.y += p.vy;
           if (p.x < 0 || p.x > w) p.vx *= -1;
@@ -45,7 +45,7 @@ export function ParticleBackground() {
         ctx.globalAlpha = 0.6;
         ctx.beginPath(); ctx.arc(p.x, p.y, 1.3, 0, Math.PI * 2); ctx.fill();
         for (let j = i + 1; j < pts.length; j++) {
-          const q = pts[j];
+          const q = pts[j]!;
           const d = Math.hypot(p.x - q.x, p.y - q.y);
           if (d < 120) {
             ctx.globalAlpha = (1 - d / 120) * 0.15;
