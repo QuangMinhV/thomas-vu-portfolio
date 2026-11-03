@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 
-/** Standard page section with numbered mono eyebrow + heading. */
-export function Section({ index, title, children }: { index: string; title: string; children: ReactNode }) {
+/** Page section with numbered mono eyebrow + heading. `id` is the anchor the nav scrolls to. */
+export function Section({ id, index, title, children }: { id: string; index: string; title: string; children: ReactNode }) {
   return (
-    <section aria-labelledby="page-title" className="mx-auto max-w-5xl px-5 py-16 md:py-24">
+    <section id={id} aria-labelledby={`${id}-title`} className="mx-auto max-w-5xl scroll-mt-24 px-5 py-16 md:py-24">
       <div className="stagger mb-10">
         <p className="font-mono text-sm text-primary">{index} //</p>
-        <h1 id="page-title" className="mt-2 text-4xl font-bold tracking-tight md:text-6xl">{title}</h1>
+        <h2 id={`${id}-title`} className="mt-2 text-4xl font-bold tracking-tight md:text-6xl">{title}</h2>
       </div>
       {children}
     </section>

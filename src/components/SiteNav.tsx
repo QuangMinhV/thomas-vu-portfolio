@@ -1,23 +1,52 @@
-import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const links = [
-  { to: "/about", label: "About" },
-  { to: "/projects", label: "Projects" },
-  { to: "/skills", label: "Skills" },
-  { to: "/experience", label: "Experience" },
-  { to: "/contact", label: "Contact" },
+export const sections = [
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
 ] as const;
 
-/** Sticky glass navigation with a mobile menu. */
+/** Highlights the section currently in the middle band of the viewport. */
+function useActiveSection() {
+  const [active, setActive] = useState<string | null>(null);
+  useEffect(() => {
+    const els = sections.map((s) => document.getElementById(s.id)).filter((el): el is HTMLElement => !!el);
+    if (!els.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setActive(e.target.id);
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    els.forEach((el) => io.observe(el));
+    // Clear the highlight when scrolled back up to the hero.
+    const onScroll = () => {
+      const first = els[0];
+      if (first && window.scrollY < first.offsetTop - window.innerHeight / 2) setActive(null);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      io.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+  return active;
+}
+
+/** Sticky glass navigation with a mobile menu; links scroll to sections on the single page. */
 export function SiteNav() {
   const [open, setOpen] = useState(false);
+  const active = useActiveSection();
+  const linkClass = (id: string) => (active === id ? "text-primary neon-glow" : "text-muted-foreground");
+
   return (
     <header className="sticky top-0 z-40 px-4 pt-4">
       <nav aria-label="Main" className="glass mx-auto flex max-w-5xl items-center justify-between px-5 py-3">
-        <Link to="/" className="font-mono text-sm font-bold tracking-tight">
+        <a href="/#top" className="font-mono text-sm font-bold tracking-tight">
           <span className="text-primary">&lt;</span>TV<span className="text-primary">/&gt;</span>
-        </Link>
+        </a>
         <button
           className="font-mono text-sm text-muted-foreground md:hidden"
           aria-expanded={open}
@@ -27,22 +56,30 @@ export function SiteNav() {
           {open ? "close" : "menu"}
         </button>
         <ul className="hidden gap-6 md:flex">
-          {links.map((l) => (
-            <li key={l.to}>
-              <Link to={l.to} className="text-sm text-muted-foreground transition-colors hover:text-primary" activeProps={{ className: "text-primary neon-glow" }}>
-                {l.label}
-              </Link>
+          {sections.map((s) => (
+            <li key={s.id}>
+              <a
+                href={`/#${s.id}`}
+                aria-current={active === s.id ? "true" : undefined}
+                className={`text-sm transition-colors hover:text-primary ${linkClass(s.id)}`}
+              >
+                {s.label}
+              </a>
             </li>
           ))}
         </ul>
       </nav>
       {open && (
         <ul id="mobile-menu" className="glass page-enter mx-auto mt-2 flex max-w-5xl flex-col p-3 md:hidden">
-          {links.map((l) => (
-            <li key={l.to}>
-              <Link to={l.to} onClick={() => setOpen(false)} className="block rounded-md px-3 py-2 text-muted-foreground hover:text-primary" activeProps={{ className: "text-primary" }}>
-                {l.label}
-              </Link>
+          {sections.map((s) => (
+            <li key={s.id}>
+              <a
+                href={`/#${s.id}`}
+                onClick={() => setOpen(false)}
+                className={`block rounded-md px-3 py-2 hover:text-primary ${linkClass(s.id)}`}
+              >
+                {s.label}
+              </a>
             </li>
           ))}
         </ul>
