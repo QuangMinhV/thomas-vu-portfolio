@@ -11,10 +11,10 @@ import { profile } from "@/data/portfolio";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Thomas Vu — Full-Stack Developer" },
-      { name: "description", content: "Thomas Vu builds fast, accessible, minimal web experiences." },
-      { property: "og:title", content: "Thomas Vu — Full-Stack Developer" },
-      { property: "og:description", content: "Thomas Vu builds fast, accessible, minimal web experiences." },
+      { title: "Thomas Vu — Data Analyst" },
+      { name: "description", content: "Thomas Vu is a Data Analyst in Perth working with Power BI, SQL Server and Excel." },
+      { property: "og:title", content: "Thomas Vu — Data Analyst" },
+      { property: "og:description", content: "Thomas Vu is a Data Analyst in Perth working with Power BI, SQL Server and Excel." },
     ],
   }),
   component: Home,

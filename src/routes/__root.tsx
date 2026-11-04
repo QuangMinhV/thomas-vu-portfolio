@@ -52,8 +52,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Thomas Vu — Developer Portfolio" },
-      { name: "description", content: "Portfolio of Thomas Vu, full-stack developer and UI engineer." },
+      { title: "Thomas Vu — Data Analyst Portfolio" },
+      { name: "description", content: "Portfolio of Thomas Vu, Data Analyst in Perth: Power BI, SQL Server and Excel projects." },
       { name: "author", content: "Thomas Vu" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

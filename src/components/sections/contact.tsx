@@ -20,7 +20,7 @@ export function ContactSection() {
     <Section id="contact" index="05" title="Let's talk">
       <div className="grid gap-8 md:grid-cols-[1fr_1.3fr]">
         <Reveal>
-          <p className="text-lg text-muted-foreground">Have a project in mind or just want to say hi? My inbox is always open.</p>
+          <p className="text-lg text-muted-foreground">I'm open to entry-level and graduate Data Analyst roles in Perth, and happy to talk about any of my projects. Full working rights in Australia.</p>
           <a href={`mailto:${profile.email}`} className="text-gradient mt-6 block text-2xl font-bold">{profile.email}</a>
           <p className="mt-2 font-mono text-sm text-muted-foreground">{profile.location}</p>
           <ul className="mt-6 flex gap-4">
@@ -43,7 +43,7 @@ export function ContactSection() {
             </div>
             <div>
               <label htmlFor="message" className="mb-1 block font-mono text-xs text-muted-foreground">Message</label>
-              <textarea id="message" name="message" required rows={5} maxLength={2000} className={field} placeholder="Tell me about your project…" />
+              <textarea id="message" name="message" required rows={5} maxLength={2000} className={field} placeholder="Tell me about the role or project…" />
             </div>
             <button type="submit" className="w-full rounded-full bg-primary py-3 font-medium text-primary-foreground shadow-[var(--shadow-neon)] transition-transform hover:-translate-y-0.5">
               Send message
