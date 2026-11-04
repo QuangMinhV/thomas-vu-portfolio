@@ -10,8 +10,8 @@ export const profile = {
     "I turn raw business data into clean models, clear Power BI dashboards and recommendations managers can act on.",
   email: "otbibi@gmail.com",
   location: "Perth, WA, Australia",
-  /** Hero photo; replace with /thomas.jpg once the real photo is added to /public */
-  photo: "/profile-placeholder.svg",
+  /** Hero photo in /public */
+  photo: "/thomas.jpg",
   resumeUrl: "https://drive.google.com/uc?export=download&id=1iXi4VcUD_iKJsvdW8XV-JE3c-oyhl9_e",
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/thomas-minh-vu" },
@@ -102,7 +102,7 @@ export const projects: Project[] = [
     stack: "Power BI",
     kind: "Academic",
     date: "11/2025",
-    image: "/projects/curtin.svg",
+    image: "/projects/curtin.jpg",
   },
 ];
 
