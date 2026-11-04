@@ -199,6 +199,8 @@ html.light .gradient-bg { --blob-opacity: 0.45; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+  *:not(.blob), *::before, *::after { animation: none !important; transition: none !important; }
+  /* Keep the background drifting, just much more slowly, when the OS asks for less motion */
+  .gradient-bg .blob { animation-duration: 40s !important; }
   .reveal { opacity: 1; transform: none; }
 }
