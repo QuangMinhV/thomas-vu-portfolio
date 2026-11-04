@@ -198,8 +198,13 @@ html.light .gradient-bg { --blob-opacity: 0.45; }
   100% { transform: translate(15vw, -20vh) scale(0.95); }
 }
 
+/* Hero slideshow: cross-fade with a slow zoom */
+.hero-slide { opacity: 0; transform: scale(1.06); transition: opacity 1.2s ease, transform 5s ease-out; }
+.hero-slide.is-active { opacity: 1; transform: scale(1); }
+
 @media (prefers-reduced-motion: reduce) {
-  *:not(.blob), *::before, *::after { animation: none !important; transition: none !important; }
+  *:not(.blob):not(.hero-slide), *::before, *::after { animation: none !important; transition: none !important; }
+  .hero-slide { transform: none !important; transition: opacity 1.2s ease !important; }
   /* Keep the background drifting, just much more slowly, when the OS asks for less motion */
   .gradient-bg .blob { animation-duration: 40s !important; }
   .reveal { opacity: 1; transform: none; }

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { Typewriter } from "@/components/Typewriter";
+import { HeroPhotos } from "@/components/HeroPhotos";
 import { AboutSection } from "@/components/sections/about";
 import { ProjectsSection } from "@/components/sections/projects";
 import { SkillsSection } from "@/components/sections/skills";
@@ -76,11 +77,7 @@ function Hero() {
         </div>
       </div>
       <div className="order-1 mx-auto w-48 sm:w-60 md:order-2 md:w-full md:max-w-xs">
-        <img
-          src={profile.photo}
-          alt={`Portrait of ${profile.name}`}
-          className="photo-enter aspect-[5/6] w-full rounded-2xl border object-cover shadow-[var(--shadow-neon)]"
-        />
+        <HeroPhotos photos={profile.photos} />
       </div>
     </section>
   );
