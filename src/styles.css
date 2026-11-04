@@ -71,29 +71,29 @@
 
 /* Light theme: toggled by adding .light to <html> (see ThemeToggle) */
 html.light {
-  /* White background, black text; accents become black/grey */
+  /* White background and black text, keeping the neon accents and glow.
+     Accents are a shade deeper than in dark mode so they stay readable on white. */
   --background: oklch(1 0 0);
   --foreground: oklch(0 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0 0 0);
-  --primary: oklch(0 0 0);
+  --primary: oklch(0.62 0.15 175);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.965 0 0);
   --secondary-foreground: oklch(0 0 0);
   --muted: oklch(0.965 0 0);
   --muted-foreground: oklch(0.2 0 0);
-  --accent: oklch(0.35 0 0);
+  --accent: oklch(0.58 0.24 340);
   --accent-foreground: oklch(1 0 0);
-  --border: oklch(0 0 0 / 15%);
-  --input: oklch(0 0 0 / 18%);
-  --ring: oklch(0 0 0);
-  --neon: oklch(0.55 0 0);
-  --neon-2: oklch(0 0 0);
-  --glass: oklch(1 0 0);
-  --shadow-neon: 0 8px 24px -10px oklch(0 0 0 / 30%);
-  --gradient-neon: linear-gradient(120deg, oklch(0 0 0), oklch(0 0 0));
+  --border: oklch(0 0 0 / 12%);
+  --input: oklch(0 0 0 / 15%);
+  --ring: oklch(0.62 0.15 175);
+  --neon: oklch(0.7 0.17 175);
+  --neon-2: oklch(0.6 0.25 340);
+  --glass: oklch(1 0 0 / 80%);
+  --shadow-neon: 0 0 26px -4px color-mix(in oklab, var(--neon) 70%, transparent);
   color-scheme: light;
 }
 html { transition: background-color 0.3s; }
