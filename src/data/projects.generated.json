@@ -1,0 +1,85 @@
+[
+  {
+    "title": "Payroll Remediation Analytics",
+    "desc": "Three-layer SQL Server warehouse and Power BI star schema over 45,607 timesheet rows; found $35.1K owed to 14 of 100 employees.",
+    "tools": [
+      "SQL Server",
+      "Power BI",
+      "DAX",
+      "Star Schema"
+    ],
+    "categories": [
+      "SQL",
+      "Power BI"
+    ],
+    "kind": "Personal",
+    "date": "10/2026",
+    "image": "/projects/gh/payroll-project.jpg",
+    "href": "https://github.com/QuangMinhV/Thomas-s_portfolio/tree/main/payroll_project"
+  },
+  {
+    "title": "RFM Customer Segmentation",
+    "desc": "Scored customers from 51,290 order lines with CTEs and window functions; At Risk was the largest segment at $2.2M in sales.",
+    "tools": [
+      "SQL Server",
+      "T-SQL",
+      "Window Functions"
+    ],
+    "categories": [
+      "SQL"
+    ],
+    "kind": "Personal",
+    "date": "10/2026",
+    "image": "/projects/gh/rfm-project.svg",
+    "href": "https://github.com/QuangMinhV/Thomas-s_portfolio/tree/main/RFM%20Project"
+  },
+  {
+    "title": "Coffee Sales Analysis",
+    "desc": "~149K transactions reshaped into a star schema; 7–10 AM held 46% of revenue, so staff should shift to mornings.",
+    "tools": [
+      "Power BI",
+      "DAX",
+      "Star Schema"
+    ],
+    "categories": [
+      "Power BI"
+    ],
+    "kind": "Personal",
+    "date": "09/2026",
+    "image": "/projects/gh/coffee-sales.jpg",
+    "href": "https://github.com/QuangMinhV/Thomas-s_portfolio/tree/main/coffee-sales"
+  },
+  {
+    "title": "Hospital ER Analysis",
+    "desc": "9,216 emergency visits; found 59% of patients missed the 30-minute wait target at every hour of the day.",
+    "tools": [
+      "Power BI",
+      "Power Query",
+      "DAX"
+    ],
+    "categories": [
+      "Power BI"
+    ],
+    "kind": "Personal",
+    "date": "09/2026",
+    "image": "/projects/gh/hospital-er.jpg",
+    "href": "https://github.com/QuangMinhV/Thomas-s_portfolio/tree/main/hospital-er"
+  },
+  {
+    "title": "Pizza Sales Analysis",
+    "desc": "48,620 order lines from 2015: peak hours, holiday spikes, best and worst pizzas, ingredient usage and an 18-check data validation log.",
+    "tools": [
+      "Power BI",
+      "Power Query",
+      "DAX",
+      "Field Parameters"
+    ],
+    "categories": [
+      "Power BI"
+    ],
+    "kind": "Personal",
+    "date": "09/2026",
+    "image": "/projects/gh/pizza-sales.jpg",
+    "href": "https://github.com/QuangMinhV/Thomas-s_portfolio/tree/main/pizza-sales"
+  }
+]

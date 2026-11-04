@@ -1,8 +1,8 @@
+import generatedProjects from "./projects.generated.json";
+
 /**
  * All portfolio content lives here — edit this file to update the site.
  */
-const repo = "https://github.com/QuangMinhV/Thomas-s_portfolio/tree/main";
-
 export const profile = {
   name: "Thomas Vu",
   roles: ["Data Analyst", "Power BI · SQL · Excel"],
@@ -40,75 +40,39 @@ export type Project = {
   title: string;
   desc: string;
   tools: string[];
-  /** Filter group shown on the image badge */
-  stack: "Power BI" | "SQL" | "SQL + Power BI";
-  kind: "Personal" | "Academic";
+  /** Badge on the image; also drives the filter buttons */
+  categories: string[];
+  kind: "Personal" | "Academic" | string;
   date: string;
   image: string;
   href?: string;
 };
 
-export const projects: Project[] = [
-  {
-    title: "Payroll Remediation Analytics",
-    desc: "Three-layer SQL Server warehouse and Power BI star schema over 45,607 timesheet rows; found $35.1K owed to 14 of 100 employees.",
-    tools: ["SQL Server", "Power BI", "DAX", "Star Schema"],
-    stack: "SQL + Power BI",
-    kind: "Personal",
-    date: "10/2026",
-    image: "/projects/payroll.jpg",
-    href: `${repo}/payroll_project`,
-  },
-  {
-    title: "RFM Customer Segmentation",
-    desc: "Scored customers from 51,290 order lines with CTEs and window functions; At Risk was the largest segment at $2.2M in sales.",
-    tools: ["SQL Server", "T-SQL", "Window Functions"],
-    stack: "SQL",
-    kind: "Personal",
-    date: "10/2026",
-    image: "/projects/rfm.svg",
-    href: `${repo}/RFM%20Project`,
-  },
-  {
-    title: "Pizza Sales Analysis",
-    desc: "48,620 order lines from 2015: peak hours, holiday spikes, best and worst pizzas, ingredient usage and an 18-check data validation log.",
-    tools: ["Power BI", "Power Query", "DAX", "Field Parameters"],
-    stack: "Power BI",
-    kind: "Personal",
-    date: "09/2026",
-    image: "/projects/pizza.jpg",
-    href: `${repo}/pizza-sales`,
-  },
-  {
-    title: "Hospital ER Analysis",
-    desc: "9,216 emergency visits; found 59% of patients missed the 30-minute wait target at every hour of the day.",
-    tools: ["Power BI", "Power Query", "DAX"],
-    stack: "Power BI",
-    kind: "Personal",
-    date: "09/2026",
-    image: "/projects/hospital.jpg",
-    href: `${repo}/hospital-er`,
-  },
-  {
-    title: "Coffee Sales Analysis",
-    desc: "~149K transactions reshaped into a star schema; 7–10 AM held 46% of revenue, so staff should shift to mornings.",
-    tools: ["Power BI", "DAX", "Star Schema"],
-    stack: "Power BI",
-    kind: "Personal",
-    date: "09/2026",
-    image: "/projects/coffee.jpg",
-    href: `${repo}/coffee-sales`,
-  },
+/**
+ * Projects come from the Thomas-s_portfolio GitHub repo: every folder with a project.json
+ * is fetched at build time by scripts/fetch-projects.mjs. Projects that are not on GitHub
+ * are listed here.
+ */
+const localProjects: Project[] = [
   {
     title: "Curtin Law School Feeder Schools",
     desc: "Integrated 12,000+ enrolment records into a Power BI report with 15+ DAX measures to find underrepresented schools for outreach.",
     tools: ["Power BI", "Excel", "Power Query"],
-    stack: "Power BI",
+    categories: ["Power BI"],
     kind: "Academic",
     date: "11/2025",
     image: "/projects/curtin.jpg",
   },
 ];
+
+const sortKey = (date: string) => {
+  const [m, y] = date.split("/").map(Number);
+  return (y || 0) * 100 + (m || 0);
+};
+
+export const projects: Project[] = [...(generatedProjects as Project[]), ...localProjects].sort(
+  (a, b) => sortKey(b.date) - sortKey(a.date),
+);
 
 export type SkillLevel = "Proficient" | "Working" | "Basic";
 

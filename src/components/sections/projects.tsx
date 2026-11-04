@@ -4,15 +4,15 @@ import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { projects } from "@/data/portfolio";
 
-const filters = ["All", "Power BI", "SQL"] as const;
-type Filter = (typeof filters)[number];
+// Filter buttons come from the categories used across all projects, most common first.
+const counts = new Map<string, number>();
+projects.flatMap((p) => p.categories).forEach((c) => counts.set(c, (counts.get(c) ?? 0) + 1));
+const filters = ["All", ...[...counts.keys()].sort((a, b) => counts.get(b)! - counts.get(a)!)];
 
-const matches = (stack: string, f: Filter) => f === "All" || stack.includes(f);
-
-/** Project gallery: image cards with a tool badge, filterable by stack. */
+/** Project gallery: image cards with a category badge, filterable by category. */
 export function ProjectsSection() {
-  const [filter, setFilter] = useState<Filter>("All");
-  const shown = projects.filter((p) => matches(p.stack, filter));
+  const [filter, setFilter] = useState("All");
+  const shown = projects.filter((p) => filter === "All" || p.categories.includes(filter));
 
   return (
     <Section id="projects" index="02" title="Projects">
@@ -39,9 +39,13 @@ export function ProjectsSection() {
           <Reveal key={p.title} delay={(i % 3) * 100}>
             <li className="glass glass-hover flex h-full flex-col overflow-hidden">
               <div className="relative aspect-video overflow-hidden border-b">
-                <img src={p.image} alt={`${p.title} preview`} loading="lazy" className="h-full w-full object-cover object-top" />
+                {p.image ? (
+                  <img src={p.image} alt={`${p.title} preview`} loading="lazy" className="h-full w-full object-cover object-top" />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-secondary font-mono text-sm text-muted-foreground">{p.categories.join(" + ")}</div>
+                )}
                 <span className="absolute left-3 bottom-3 rounded bg-background/85 px-2 py-0.5 font-mono text-[11px] text-primary">
-                  {p.stack}
+                  {p.categories.join(" + ")}
                 </span>
                 <span className="absolute right-3 top-3 rounded border border-primary/60 bg-background/85 px-2 py-0.5 font-mono text-[11px] text-foreground">
                   {p.kind}
