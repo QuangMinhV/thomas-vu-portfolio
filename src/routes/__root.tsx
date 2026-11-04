@@ -13,7 +13,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { ParticleBackground } from "@/components/ParticleBackground";
+import { GradientBackground } from "@/components/GradientBackground";
 import { SiteNav } from "@/components/SiteNav";
 import { profile } from "@/data/portfolio";
 import { themeInitScript } from "@/components/ThemeToggle";
@@ -88,7 +88,7 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
-/** App shell: particles + nav + animated page outlet + footer. */
+/** App shell: gradient background + nav + animated page outlet + footer. */
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const { pathname } = useLocation();
@@ -98,7 +98,7 @@ function RootComponent() {
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground">
         Skip to content
       </a>
-      <ParticleBackground />
+      <GradientBackground />
       <SiteNav />
       {/* key on pathname re-triggers the page transition animation */}
       <main id="main" key={pathname} className="page-enter min-h-[80vh]">
