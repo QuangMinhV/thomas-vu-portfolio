@@ -14,6 +14,7 @@ export const profile = {
   photos: [
     { src: "/photos/thomas-poster.jpg", alt: "Thomas presenting the Curtin Law School data poster" },
     { src: "/photos/thomas-graduation.jpg", alt: "Thomas at his Curtin University graduation" },
+    { src: "/photos/thomas-graduation-lawn.jpg", alt: "Thomas in his graduation gown on the Curtin lawn" },
   ],
   resumeUrl: "https://drive.google.com/uc?export=download&id=1iXi4VcUD_iKJsvdW8XV-JE3c-oyhl9_e",
   socials: [
