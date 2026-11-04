@@ -33,7 +33,17 @@ const sortKey = (date = "") => {
   return (y || 0) * 100 + (m || 0);
 };
 
-async function main() {
+/** Fetch projects from GitHub; on any failure keep the committed snapshot. */
+export async function fetchProjects() {
+  try {
+    await run();
+  } catch (err) {
+    const snapshot = JSON.parse(await readFile(OUT, "utf8").catch(() => "[]"));
+    console.warn(`[projects] ${err.message}. Using the committed snapshot (${snapshot.length} projects).`);
+  }
+}
+
+async function run() {
   const head = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/commits/${BRANCH}`, { headers });
   if (!head.ok) throw new Error(`GitHub commit request failed: ${head.status}`);
   const { sha } = await head.json();
@@ -74,7 +84,5 @@ async function main() {
   console.log(`[projects] ${projects.length} projects from ${OWNER}/${REPO}`);
 }
 
-main().catch(async (err) => {
-  const snapshot = JSON.parse(await readFile(OUT, "utf8").catch(() => "[]"));
-  console.warn(`[projects] ${err.message}. Using the committed snapshot (${snapshot.length} projects).`);
-});
+// Allow `node scripts/fetch-projects.mjs` (npm run projects) as well as the Vite plugin.
+if (import.meta.url === `file://${process.argv[1]}`) await fetchProjects();
