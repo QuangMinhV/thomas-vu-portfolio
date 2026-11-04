@@ -71,27 +71,29 @@
 
 /* Light theme: toggled by adding .light to <html> (see ThemeToggle) */
 html.light {
-  --background: oklch(0.985 0.004 260);
-  --foreground: oklch(0.2 0.02 260);
+  /* White background, black text; accents become black/grey */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0 0 0);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 260);
+  --card-foreground: oklch(0 0 0);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.02 260);
-  --primary: oklch(0.56 0.12 180);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.95 0.006 260);
-  --secondary-foreground: oklch(0.2 0.02 260);
-  --muted: oklch(0.95 0.006 260);
-  --muted-foreground: oklch(0.45 0.02 260);
-  --accent: oklch(0.55 0.22 340);
-  --accent-foreground: oklch(0.99 0 0);
-  --border: oklch(0 0 0 / 10%);
-  --input: oklch(0 0 0 / 12%);
-  --ring: oklch(0.56 0.12 180);
-  --neon: oklch(0.56 0.12 180);
-  --neon-2: oklch(0.55 0.22 340);
-  --glass: oklch(1 0 0 / 70%);
-  --shadow-neon: 0 8px 24px -8px color-mix(in oklab, var(--neon) 45%, transparent);
+  --popover-foreground: oklch(0 0 0);
+  --primary: oklch(0 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.965 0 0);
+  --secondary-foreground: oklch(0 0 0);
+  --muted: oklch(0.965 0 0);
+  --muted-foreground: oklch(0.2 0 0);
+  --accent: oklch(0.35 0 0);
+  --accent-foreground: oklch(1 0 0);
+  --border: oklch(0 0 0 / 15%);
+  --input: oklch(0 0 0 / 18%);
+  --ring: oklch(0 0 0);
+  --neon: oklch(0.55 0 0);
+  --neon-2: oklch(0 0 0);
+  --glass: oklch(1 0 0);
+  --shadow-neon: 0 8px 24px -10px oklch(0 0 0 / 30%);
+  --gradient-neon: linear-gradient(120deg, oklch(0 0 0), oklch(0 0 0));
   color-scheme: light;
 }
 html { transition: background-color 0.3s; }
