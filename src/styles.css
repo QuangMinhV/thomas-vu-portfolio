@@ -69,6 +69,40 @@
   --gradient-neon: linear-gradient(120deg, var(--neon), var(--neon-2));
 }
 
+/* Light theme: toggled by adding .light to <html> (see ThemeToggle) */
+html.light {
+  --background: oklch(0.985 0.004 260);
+  --foreground: oklch(0.2 0.02 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.02 260);
+  --primary: oklch(0.56 0.12 180);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.95 0.006 260);
+  --secondary-foreground: oklch(0.2 0.02 260);
+  --muted: oklch(0.95 0.006 260);
+  --muted-foreground: oklch(0.45 0.02 260);
+  --accent: oklch(0.55 0.22 340);
+  --accent-foreground: oklch(0.99 0 0);
+  --border: oklch(0 0 0 / 10%);
+  --input: oklch(0 0 0 / 12%);
+  --ring: oklch(0.56 0.12 180);
+  --neon: oklch(0.56 0.12 180);
+  --neon-2: oklch(0.55 0.22 340);
+  --glass: oklch(1 0 0 / 70%);
+  --shadow-neon: 0 8px 24px -8px color-mix(in oklab, var(--neon) 45%, transparent);
+  color-scheme: light;
+}
+html { transition: background-color 0.3s; }
+
+/* Hero photo: slow fade in */
+@keyframes photo-in {
+  from { opacity: 0; transform: scale(0.97); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@utility photo-enter { animation: photo-in 1.6s ease-out 0.4s both; }
+
 @layer base {
   * { border-color: var(--color-border); }
   html { scroll-behavior: smooth; }

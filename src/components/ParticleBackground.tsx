@@ -13,8 +13,12 @@ export function ParticleBackground() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const styles = getComputedStyle(document.documentElement);
-    const neon = styles.getPropertyValue("--neon").trim() || "cyan";
+    // Re-read the accent colour when the theme class on <html> changes.
+    let neon = "cyan";
+    const readNeon = () => { neon = getComputedStyle(document.documentElement).getPropertyValue("--neon").trim() || "cyan"; };
+    readNeon();
+    const themeObserver = new MutationObserver(() => { readNeon(); if (reduce) draw(); });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
 
     let w = 0, h = 0, raf = 0;
     type P = { x: number; y: number; vx: number; vy: number };
@@ -58,7 +62,7 @@ export function ParticleBackground() {
 
     resize(); draw();
     window.addEventListener("resize", resize);
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
+    return () => { cancelAnimationFrame(raf); themeObserver.disconnect(); window.removeEventListener("resize", resize); };
   }, []);
 
   return <canvas ref={ref} aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10" />;

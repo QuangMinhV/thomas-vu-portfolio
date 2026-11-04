@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export const sections = [
   { id: "about", label: "About" },
@@ -44,18 +45,21 @@ export function SiteNav() {
   return (
     <header className="sticky top-0 z-40 px-4 pt-4">
       <nav aria-label="Main" className="glass mx-auto flex max-w-5xl items-center justify-between px-5 py-3">
-        <a href="/#top" className="font-mono text-sm font-bold tracking-tight">
-          <span className="text-primary">&lt;</span>TV<span className="text-primary">/&gt;</span>
+        <a href="/#top" className="text-base font-bold tracking-tight">
+          Thomas Vu<span className="text-primary">.</span>
         </a>
+        <div className="flex items-center gap-3 md:hidden">
+        <ThemeToggle />
         <button
-          className="font-mono text-sm text-muted-foreground md:hidden"
+          className="font-mono text-sm text-muted-foreground"
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((o) => !o)}
         >
           {open ? "close" : "menu"}
         </button>
-        <ul className="hidden gap-6 md:flex">
+        </div>
+        <ul className="hidden items-center gap-6 md:flex">
           {sections.map((s) => (
             <li key={s.id}>
               <a
@@ -67,6 +71,7 @@ export function SiteNav() {
               </a>
             </li>
           ))}
+          <li><ThemeToggle /></li>
         </ul>
       </nav>
       {open && (

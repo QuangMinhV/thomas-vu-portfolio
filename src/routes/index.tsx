@@ -40,21 +40,29 @@ function Home() {
   );
 }
 
-/** Hero section with staggered load-in and typewriter roles. */
+/** Hero section with staggered load-in, typewriter roles and a fading-in photo. */
 function Hero() {
   return (
-    <section id="top" aria-labelledby="hero-title" className="mx-auto flex min-h-[85vh] max-w-5xl scroll-mt-24 flex-col justify-center px-5">
-      <div className="stagger">
+    <section
+      id="top"
+      aria-labelledby="hero-title"
+      className="mx-auto grid min-h-[85vh] max-w-5xl scroll-mt-24 items-center gap-10 px-5 py-12 md:grid-cols-[1.5fr_1fr]"
+    >
+      <div className="stagger order-2 md:order-1">
         <p className="font-mono text-sm text-primary">hi, my name is</p>
-        <h1 id="hero-title" className="mt-3 text-5xl font-bold tracking-tight sm:text-7xl md:text-8xl">
-          {profile.name}<span className="text-primary">.</span>
+        <h1 id="hero-title" className="mt-3 text-5xl font-bold tracking-tight sm:text-7xl md:text-7xl lg:text-8xl">
+          {profile.name}
+          <span className="text-primary">.</span>
         </h1>
         <p className="mt-4 text-2xl font-medium text-muted-foreground sm:text-4xl">
           <Typewriter words={profile.roles} />
         </p>
         <p className="mt-6 max-w-xl text-lg text-muted-foreground">{profile.tagline}</p>
         <div className="mt-10 flex flex-wrap gap-4">
-          <a href="#projects" className="rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground shadow-[var(--shadow-neon)] transition-transform hover:-translate-y-0.5">
+          <a
+            href="#projects"
+            className="rounded-full bg-primary px-6 py-3 font-medium text-primary-foreground shadow-[var(--shadow-neon)] transition-transform hover:-translate-y-0.5"
+          >
             View my work
           </a>
           <a
@@ -66,6 +74,13 @@ function Hero() {
             Download Resume
           </a>
         </div>
+      </div>
+      <div className="order-1 mx-auto w-48 sm:w-60 md:order-2 md:w-full md:max-w-xs">
+        <img
+          src={profile.photo}
+          alt={`Portrait of ${profile.name}`}
+          className="photo-enter aspect-[5/6] w-full rounded-2xl border object-cover shadow-[var(--shadow-neon)]"
+        />
       </div>
     </section>
   );

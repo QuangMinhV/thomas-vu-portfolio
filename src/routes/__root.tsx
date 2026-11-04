@@ -16,6 +16,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ParticleBackground } from "@/components/ParticleBackground";
 import { SiteNav } from "@/components/SiteNav";
 import { profile } from "@/data/portfolio";
+import { themeInitScript } from "@/components/ThemeToggle";
 
 function NotFoundComponent() {
   return (
@@ -74,8 +75,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <head><HeadContent /></head>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <HeadContent />
+      </head>
       <body>
         {children}
         <Scripts />

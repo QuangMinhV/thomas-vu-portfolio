@@ -10,6 +10,8 @@ export const profile = {
     "I turn raw business data into clean models, clear Power BI dashboards and recommendations managers can act on.",
   email: "otbibi@gmail.com",
   location: "Perth, WA, Australia",
+  /** Hero photo; replace with /thomas.jpg once the real photo is added to /public */
+  photo: "/profile-placeholder.svg",
   resumeUrl: "https://drive.google.com/uc?export=download&id=1iXi4VcUD_iKJsvdW8XV-JE3c-oyhl9_e",
   socials: [
     { label: "LinkedIn", href: "https://www.linkedin.com/in/thomas-minh-vu" },
@@ -23,9 +25,10 @@ export const about = [
   "I'm looking for an entry-level or graduate Data Analyst role in Perth.",
 ];
 
+// 149,116 coffee + 51,290 RFM + 48,620 pizza + 45,607 payroll + 12,000 Curtin + 9,216 hospital = 315,849
 export const stats = [
-  { value: "6", label: "Analytics projects" },
-  { value: "149K", label: "Transactions in my largest model" },
+  { value: "315K+", label: "Rows of data cleaned and analysed" },
+  { value: "$35.1K", label: "Underpaid wages uncovered in one audit" },
   { value: "MCom", label: "Information Systems, Curtin" },
 ];
 
