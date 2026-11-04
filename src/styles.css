@@ -54,7 +54,7 @@
   --secondary: oklch(0.22 0.015 260);
   --secondary-foreground: oklch(0.95 0.01 260);
   --muted: oklch(0.22 0.015 260);
-  --muted-foreground: oklch(0.68 0.02 260);
+  --muted-foreground: oklch(0.86 0.012 260); /* bright enough to read over the gradient */
   --accent: oklch(0.7 0.25 340); /* neon magenta */
   --accent-foreground: oklch(0.98 0 0);
   --destructive: oklch(0.65 0.22 25);

@@ -57,7 +57,7 @@ function Hero() {
         <p className="mt-4 text-2xl font-medium text-muted-foreground sm:text-4xl">
           <Typewriter words={profile.roles} />
         </p>
-        <p className="mt-6 max-w-xl text-lg text-muted-foreground">{profile.tagline}</p>
+        <p className="mt-6 max-w-xl text-lg font-medium text-foreground/90">{profile.tagline}</p>
         <div className="mt-10 flex flex-wrap gap-4">
           <a
             href="#projects"
